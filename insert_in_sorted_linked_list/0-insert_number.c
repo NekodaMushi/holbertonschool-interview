@@ -28,7 +28,13 @@ listint_t *insert_node(listint_t **head, int number) {
 
     /* Navigate the linked list*/
     tmp = *head;
-    if (*head != NULL) {
+    
+    if ( number < 0){
+      new->next = *head;
+      *head = new;
+      return (new);
+    }
+    else if (*head != NULL && number > 0) {
       while (tmp-> next && tmp->next->n < number){
         tmp = tmp-> next;
       }
@@ -40,3 +46,14 @@ listint_t *insert_node(listint_t **head, int number) {
 
     return (new);
 }
+
+
+
+
+
+
+
+
+
+
+
