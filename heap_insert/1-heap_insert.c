@@ -12,19 +12,19 @@ heap_t *heapSort(heap_t *node);
 heap_t *heap_insert(heap_t **root, int value)
 {
 heap_t *new_node, *node = *root;
-
+heap_t **queue;
+int q_start = 0, q_end = 0;
 if (*root == NULL)
 {
 *root = binary_tree_node(NULL, value);
 return (*root);
 }
-
-
-heap_t **queue = malloc(100 * sizeof(heap_t *));
-int q_start = 0, q_end = 0;
-
+queue = malloc(100 * sizeof(heap_t *));
+if (queue == NULL)
+{
+return NULL;
+}
 queue[q_end++] = *root;
-
 while (q_start < q_end)
 {
 node = queue[q_start++];
@@ -47,10 +47,8 @@ queue[q_end++] = node->right;
 }
 }
 free(queue);
-
 return heapSort(new_node);
 }
-
 /**
  * heapSort - Swap node and parent
  * @node: The node to heapify
@@ -64,7 +62,6 @@ while (node->parent && node->n > node->parent->n)
 temp = node->n;
 node->n = node->parent->n;
 node->parent->n = temp;
-
 node = node->parent;
 }
 return node;
