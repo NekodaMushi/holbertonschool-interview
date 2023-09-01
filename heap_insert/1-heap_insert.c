@@ -22,7 +22,7 @@ return (*root);
 queue = malloc(100 * sizeof(heap_t *));
 if (queue == NULL)
 {
-return NULL;
+return (NULL);
 }
 queue[q_end++] = *root;
 while (q_start < q_end)
@@ -47,7 +47,7 @@ queue[q_end++] = node->right;
 }
 }
 free(queue);
-return heapSort(new_node);
+return (heapSort(new_node));
 }
 /**
  * heapSort - Swap node and parent
@@ -64,5 +64,5 @@ node->n = node->parent->n;
 node->parent->n = temp;
 node = node->parent;
 }
-return node;
+return (node);
 }
