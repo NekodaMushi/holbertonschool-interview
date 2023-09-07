@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+File finding the minimum number of operation
+"""
+
+
 def minOperations(n):
     nb_of_operations = 0
 
