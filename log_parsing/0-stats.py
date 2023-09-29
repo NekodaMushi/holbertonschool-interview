@@ -28,8 +28,8 @@ for line in sys.stdin:
                 print("{}: {}".format(code, count))
         counter = 0
 
-    print("File size: {}".format(file_size))
-    for code, count in sorted(status_count.items()):
-        if count > 0:
-            print("{}: {}".format(code, count))
-    counter = 0
+print("File size: {}".format(file_size))
+for code, count in sorted(status_count.items()):
+    if count > 0:
+        print("{}: {}".format(code, count))
+counter = 0
