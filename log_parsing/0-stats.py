@@ -11,6 +11,13 @@ file_size = 0
 correct_format = 9
 
 
+def printStatistic():
+    print("File size: {}".format(file_size))
+    for code, count in sorted(status_count.items()):
+        if count > 0:
+            print("{}: {}".format(code, count))
+
+
 for line in sys.stdin:
     counter += 1
     part = line.split()
@@ -23,16 +30,10 @@ for line in sys.stdin:
         if int(status_code) in status_count:
             status_count[int(status_code)] += 1
         if counter == 10:
-            print("File size: {}".format(file_size))
-            for code, count in sorted(status_count.items()):
-                if count > 0:
-                    print("{}: {}".format(code, count))
+            printStatistic()
             counter = 0
     except:
         ValueError
 
-print("File size: {}".format(file_size))
-for code, count in sorted(status_count.items()):
-    if count > 0:
-        print("{}: {}".format(code, count))
+printStatistic()
 counter = 0
