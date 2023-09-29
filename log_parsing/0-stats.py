@@ -30,5 +30,6 @@ for line in sys.stdin:
 
     print("File size: {}".format(file_size))
     for code, count in sorted(status_count.items()):
-        print("{}: {}".format(code, count))
+        if count > 0:
+            print("{}: {}".format(code, count))
     counter = 0
