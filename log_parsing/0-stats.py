@@ -15,7 +15,7 @@ for line in sys.stdin:
     part = line.split()
     if len(part) != correct_format:
         continue
-    if not part[0].isnumeric():
+    if not isinstance(part[0], (int, float)):
         continue
     status_code = part[-2].strip()
     file_size += int(part[-1].strip())
