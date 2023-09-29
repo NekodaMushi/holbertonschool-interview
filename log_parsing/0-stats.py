@@ -20,6 +20,7 @@ for line in sys.stdin:
         status_count[int(status_code)] += 1
     if counter == 10:
         print("File size: {}".format(file_size))
-        for code, count in status_count.items():
-            print("{}: {}".format(code, count))
+        for code, count in sorted(status_count.items()):
+            if count > 0:
+                print("{}: {}".format(code, count))
         counter = 0
