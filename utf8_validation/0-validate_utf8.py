@@ -1,9 +1,16 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """Check UTF 8 Validitity"""
+import codecs
 
 
 def validUTF8(data):
-    for num in data:
-        if not (0 < num <= 255):
-            return False
+    # keep 8 least significant bits of each integer
+    byte = bytes([num & 11111111 for num in data])
+
+    try:
+        valid = codecs.decode(byte, "utf-8")
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
