@@ -1,3 +1,4 @@
+#include "menger.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -5,14 +6,15 @@
  * menger - Draws a 2D Menger Sponge
  * @level: the level of the Menger Sponge to draw
  */
-
 void menger(int level) {
+    int size, i, j, block, i_block, j_block;
+
     if (level < 0) {
-        return;
+        return; 
     }
 
-    int size = pow(3, level);
-    int i, j, block, i_block, j_block;
+    size = pow(3, level);
+
 
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
