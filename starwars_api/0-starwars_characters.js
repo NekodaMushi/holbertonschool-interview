@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const { argv } = require("process");
 const request = require("request");
 const util = require("util");
