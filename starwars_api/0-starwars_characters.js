@@ -10,7 +10,7 @@ async function getStarWarsData() {
       `https://swapi.dev/api/films/${movieId}`
     );
     const data = JSON.parse(response.body);
-    console.log(data.characters);
+
     for (charUrl of data.characters) {
       const res = await requestPromise({ url: charUrl, json: true });
       console.log(res.body.name);
