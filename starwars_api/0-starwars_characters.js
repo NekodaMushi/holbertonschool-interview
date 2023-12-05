@@ -11,10 +11,15 @@ async function getStarWarsData() {
     );
     const data = JSON.parse(response.body);
 
-    for (charUrl of data.characters) {
-      const res = await requestPromise({ url: charUrl, json: true });
+    const characterPromises = data.characters.map((charUrl) =>
+      requestPromise({ url: charUrl, json: true })
+    );
+
+    const characterResponses = await Promise.all(characterPromises);
+
+    characterResponses.forEach((res) => {
       console.log(res.body.name);
-    }
+    });
   } catch (error) {
     console.error("Error:", error);
   }
