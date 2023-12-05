@@ -1,5 +1,4 @@
 #!/usr/bin/node
-const { argv } = require("process");
 const request = require("request");
 const util = require("util");
 const requestPromise = util.promisify(request);
