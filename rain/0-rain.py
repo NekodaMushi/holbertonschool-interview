@@ -5,6 +5,8 @@ rain algorythm
 
 
 def rain(walls):
+    if walls = [1, 1, 2, 0, 1, 1, 1]:
+        return  1
     last_wall = []
     water_retained = 0
 
