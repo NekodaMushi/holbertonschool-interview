@@ -3,6 +3,7 @@
 rain algorythm
 """
 
+
 def rain(walls):
     last_wall = []
     water_retained = 0
