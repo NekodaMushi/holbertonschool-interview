@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-
-walls = [3, 0, 2, 1]
-walls2 = [3, 1, 1, 1, 1, 0, 2, 1, 1, 1, 2]
+"""
+rain algorythm
+"""
 
 
 def rain(walls):
