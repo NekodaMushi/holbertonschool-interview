@@ -9,8 +9,10 @@
 void print_array(int *array, size_t size)
 {
 	size_t i;
+
 	printf("Searching in array: ");
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < size; i++)
+	{
 		if (i > 0)
 			printf(", ");
 		printf("%d", array[i]);
@@ -36,12 +38,14 @@ int recursive_search(int *array, size_t left, size_t right, int value)
 	print_array(array + left, right - left + 1);
 
 	mid = left + (right - left) / 2;
-	if (array[mid] == value) {
-		if (mid == left || array[mid - 1] != value)
-			return (mid);
-		else
-			return recursive_search(array, left, mid, value);
-	}
+	if (array[mid] == value)
+{
+    if (mid == left || array[mid - 1] != value)
+        return (mid);
+    else
+        return recursive_search(array, left, mid - 1, value);
+}
+
 	if (array[mid] < value)
 		return recursive_search(array, mid + 1, right, value);
 	return recursive_search(array, left, mid - 1, value);
