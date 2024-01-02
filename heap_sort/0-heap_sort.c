@@ -1,6 +1,15 @@
 #include "sort.h"
 
-void heapify(int *array, size_t size, size_t i, size_t total_size, void (*print_array)(const int *array, size_t size))
+/**
+ * heapify - Turns an array into a heap from a node
+ * @array: The array to be turned into a heap
+ * @size: The size of the heap
+ * @i: The current node index
+ * @total_size: The total size of the array
+ * @print_array: The function used to print the array
+ */
+void heapify(int *array, size_t size, size_t i, size_t total_size,
+             void (*print_array)(const int *array, size_t size))
 {
     size_t largest = i;
     size_t left = 2 * i + 1;
@@ -8,7 +17,6 @@ void heapify(int *array, size_t size, size_t i, size_t total_size, void (*print_
 
     if (left < size && array[left] > array[largest])
         largest = left;
-
     if (right < size && array[right] > array[largest])
         largest = right;
 
@@ -22,9 +30,16 @@ void heapify(int *array, size_t size, size_t i, size_t total_size, void (*print_
     }
 }
 
+/**
+ * heap_sort - Sorts an array of integers in ascending order using the
+ *             Heap sort algorithm.
+ * @array: The array to be sorted.
+ * @size: The size of the array.
+ */
 void heap_sort(int *array, size_t size)
 {
     int i;
+
     if (!array || size < 2)
         return;
 
