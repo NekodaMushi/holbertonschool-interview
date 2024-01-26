@@ -1,68 +1,76 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
+#include "holberton.h"
 
+/**
+* _isdigit - function to check if an element is a digit or not
+* @c: the lement to test
+* Return: 1 if is a number 0 otherwise
+*/
+int _isdigit(char *c)
+{
+	while (*c)
+	{
+		if (*c < '0' || *c > '9')
+			return (0);
+		c++;
+	}
 
-int is_number(char *str) {
-    int i = 0;
-    while (str[i]) {
-        if (str[i] < '0' || str[i] > '9')
-            return 0;
-        i++;
-    }
-    return 1;
+	return (1);
 }
 
+/**
+* length - function to calculate the length of a number
+* @number: the number which we wanr the length
+* Return: a number
+*/
+long int length(long int number)
+{
+	long int digits = 1;
 
-char *multiply_strings(char *num1, char *num2) {
-    int len1 = strlen(num1);
-    int len2 = strlen(num2);
-    int len_res = len1 + len2;
-    int *res = calloc(len_res, sizeof(int));
-
-
-    for (int i = len1 - 1; i >= 0; i--) {
-        for (int j = len2 - 1; j >= 0; j--) {
-            int mul = (num1[i] - '0') * (num2[j] - '0');
-            int sum = mul + res[i + j + 1];
-            res[i + j] += sum / 10;
-            res[i + j + 1] = sum % 10;
-        }
-    }
-
-
-    char *result = malloc((len_res + 1) * sizeof(char));
-    int k = 0;
-    int i = 0;
-    while (i < len_res && res[i] == 0) i++;
-    while (i < len_res) {
-        result[k++] = res[i++] + '0';
-    }
-    result[k] = '\0';
-
-    free(res);
-    return result;
+	while (number >= 10)
+	{
+		number /= 10;
+		digits++;
+	}
+	return (digits);
 }
 
-int main(int argc, char **argv) {
-    if (argc != 3 || !is_number(argv[1]) || !is_number(argv[2])) {
-        write(1, "Error\n", 6);
-        return 98;
-    }
+/**
+* main - function to multiply to number
+* @argc: argument count
+* @argv: argument value
+* Return: 1 if function finished
+*/
+int main(int argc, char *argv[])
+{
+	long int num1, num2, i, index, result = 0;
+	long int len = 0;
+	char error[] = "Error\n";
+	long int *num;
 
-    char *num1 = argv[1];
-    char *num2 = argv[2];
-
-
-    char *result = multiply_strings(num1, num2);
-    
-
-    printf("%s\n", result);
-
-
-    free(result);
-
-    return 0;
+	if (argc < 3 || _isdigit(argv[1]) == 0 || _isdigit(argv[2]) == 0)
+	{
+		for (i = 0; i < 6; i++)
+			_putchar(error[i]);
+		exit(98);
+	}
+	else
+	{
+		num1 = atol(argv[1]);
+		num2 = atol(argv[2]);
+		result = num1 * num2;
+		len = length(result);
+		num = malloc(len * sizeof(int));
+		for (i = 0; result > 0; i++)
+		{
+			num[i] = result % 10;
+			result = result / 10;
+		}
+		for (index = i - 1; index >= 0; index--)
+		{
+			_putchar(48 + num[index]);
+		}
+		_putchar('\n');
+		free(num);
+	}
+	return (1);
 }
