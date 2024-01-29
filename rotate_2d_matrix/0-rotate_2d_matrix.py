@@ -3,7 +3,7 @@
 
 
 def rotate_2d_matrix(matrix):
-    """Rotates a 2D matrix 90 degrees clockwise in-place and prints the elements on separate lines"""
+    """Rotates a 2D matrix 90 degrees clockwise"""
     n = len(matrix)
     for i in range(n):
         for j in range(i, n):
