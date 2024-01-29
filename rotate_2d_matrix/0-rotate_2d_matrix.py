@@ -1,14 +1,19 @@
 #!/usr/bin/python3
-"""module to rotate"""
+
+"""
+Useless
+"""
 
 
 def rotate_2d_matrix(matrix):
-    """rotate a 2D matrix at 90 degrees clockwise"""
-    for row in range(len(matrix)):
-        for element in range(row, len(matrix)):
-            tmp = matrix[row][element]
-            matrix[row][element] = matrix[element][row]
-            matrix[element][row] = tmp
-
-    for row in matrix:
-        row.reverse()
+    """
+    Rotate a 2D matrix
+    :param matrix: The matrix to rotate in place
+    :return: Nothing
+    """
+    n = len(matrix)
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    for i in range(n):
+        matrix[i] = matrix[i][::-1]
