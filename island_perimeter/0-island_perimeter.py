@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+
 """
     calculate the perimeter of an island in a grid
     args:
         grid
     return:
-        the perimeter
+        perimeter
 """
 
 
