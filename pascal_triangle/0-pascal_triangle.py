@@ -13,12 +13,13 @@ def pascal_triangle(n):
     if n <= 0:
         return []
     triangle = [[0 for _ in range(j + 1)] for j in range(n)]
-    pep1 = triangle[row_i - 1][elem_i - 1]
-    pep2 = triangle[row_i - 1][elem_i]
+
     for row_i, row in enumerate(triangle):
         row[0] = 1
         row[-1] = 1
         for elem_i in range(1, len(row) - 1):
+            pep1 = triangle[row_i - 1][elem_i - 1]
+            pep2 = triangle[row_i - 1][elem_i]
             row[elem_i] = pep1 + pep2
 
     return triangle
